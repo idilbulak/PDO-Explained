@@ -22,7 +22,9 @@ try {
 
     $pdo->commit();
 } catch (Exception $e) {
-    $pdo->rollback();
+    if($pdo->inTransaction()) {
+        $pdo->rollback();
+    }
     echo "Transaction failed: " . $e->getMessage();
 }
 ```
@@ -58,20 +60,20 @@ while ($user = $stmt->fetch(PDO::FETCH_OBJ)) {
 }
 ```
 
-PDO::FETCH_ASSOC: Returns the results as associative arrays only.
-PDO::FETCH_NUM: Returns the results as indexed arrays only.
-PDO::FETCH_BOTH: Returns the results as both associative and indexed arrays. This is the default behavior.
-PDO::FETCH_OBJ: Returns the results as an anonymous object.
-PDO::FETCH_LAZY: Returns an object that has properties allowing for both indexed and associative array access, as well as object property access.
-PDO::FETCH_BOUND: Binds columns to variables using PDOStatement::bindColumn().
-PDO::FETCH_CLASS: Returns a new instance of the specified class, and sets the column values as the properties of this class.
-PDO::FETCH_INTO: Sets the column values into an existing object instance.
-PDO::FETCH_FUNC: Returns the result of calling the specified function with the first column value.
-PDO::FETCH_GROUP: Groups results by the values of the first column, using that value as the associated key.
-PDO::FETCH_UNIQUE: Returns a result set that will have only one row for each value of the first column.
-PDO::FETCH_KEY_PAIR: Used for two-column result sets. The first column is the key, and the second column is the value.
-PDO::FETCH_COLUMN: Returns the desired 0-indexed column.
-PDO::FETCH_SERIALIZE: Returns columns as an instance of the specified class, associated with PHP serialization.
+1. PDO::FETCH_ASSOC: Returns the results as associative arrays only.
+2. PDO::FETCH_NUM: Returns the results as indexed arrays only.
+3. PDO::FETCH_BOTH: Returns the results as both associative and indexed arrays. This is the default behavior.
+4. PDO::FETCH_OBJ: Returns the results as an anonymous object.
+5. PDO::FETCH_LAZY: Returns an object that has properties allowing for both indexed and associative array access, as well as object property access.
+6. PDO::FETCH_BOUND: Binds columns to variables using PDOStatement::bindColumn().
+7. PDO::FETCH_CLASS: Returns a new instance of the specified class, and sets the column values as the properties of this class.
+8. PDO::FETCH_INTO: Sets the column values into an existing object instance.
+9. PDO::FETCH_FUNC: Returns the result of calling the specified function with the first column value.
+10. PDO::FETCH_GROUP: Groups results by the values of the first column, using that value as the associated key.
+11. PDO::FETCH_UNIQUE: Returns a result set that will have only one row for each value of the first column.
+12. PDO::FETCH_KEY_PAIR: Used for two-column result sets. The first column is the key, and the second column is the value.
+13. PDO::FETCH_COLUMN: Returns the desired 0-indexed column.
+14. PDO::FETCH_SERIALIZE: Returns columns as an instance of the specified class, associated with PHP serialization.
 
 ## Working with Multiple Databases
 
