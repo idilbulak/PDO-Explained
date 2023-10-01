@@ -6,6 +6,8 @@ PHP Data Objects (PDO) is an extension that comes bundled with PHP since version
 
 Before diving into setup, you can check if PDO is already enabled on your system:
 
+```php
+
 <?php
 
 if (extension_loaded('pdo')) {
@@ -15,6 +17,8 @@ if (extension_loaded('pdo')) {
 }
 
 ?>
+
+```
 
 ## Installing PDO Drivers
 While PDO is available by default, the drivers for specific databases might not be. Here's how you can install them for some popular databases:
