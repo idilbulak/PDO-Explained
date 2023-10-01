@@ -6,8 +6,6 @@ PHP Data Objects (PDO) is an extension that comes bundled with PHP since version
 
 Before diving into setup, you can check if PDO is already enabled on your system:
 
-```php
-
 <?php
 
 if (extension_loaded('pdo')) {
